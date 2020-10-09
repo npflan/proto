@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package steamtoken;
+
+
+option go_package = "github.com/npf/proto/steam-token;steamtoken";
+
+service Tokenservice {
+  rpc CreateToken (CreateTokenRequest) returns (CreateTokenReply) {}
+  rpc DeleteToken (DeleteTokenRequest) returns (DeleteTokenReply) {}
+}
+
+message CreateTokenRequest {
+  string memo   = 1;
+  int32  app_id = 2;
+}
+
+message CreateTokenReply {
+  string server_token = 1;
+}
+
+message DeleteTokenRequest {
+  string server_token = 1;
+}
+
+message DeleteTokenReply {
+  string id = 1;
+}
